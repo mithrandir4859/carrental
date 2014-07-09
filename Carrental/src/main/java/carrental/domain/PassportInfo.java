@@ -1,8 +1,11 @@
 package carrental.domain;
 
+import java.io.Serializable;
+
 import org.joda.time.LocalDate;
 
-public class PassportInfo {
+public class PassportInfo implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer userId;
 	private String series;
 	private Integer number;
