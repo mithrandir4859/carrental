@@ -1,0 +1,22 @@
+
+	<div class="middle">
+		<img src="/carrental/resources/logo.png" alt="some_text">
+	</div>
+
+	<table align="left">
+		<tr>
+			<th />
+			<td><a href="login.jsp">Login</a></td>
+			
+		</tr>
+	</table>
+	<table align="right">
+		<tr>
+			<th />
+			<td>Hi, ${user.firstname }</td>
+			<td><a href="logout.do">Logout</a></td>
+		</tr>
+	</table>
+
+	<br />
+	<hr />

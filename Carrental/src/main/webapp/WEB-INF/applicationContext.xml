@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:flow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/mvc 
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/util
+			http://www.springframework.org/schema/util/spring-util-3.2.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+			http://www.springframework.org/schema/webflow-config
+			http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.3.xsd
+			">
+
+	<mvc:view-controller path="/anon/login" view-name="anon/login" />
+	<mvc:view-controller path="/" view-name="all/home" />
+	<mvc:view-controller path="/admin/selectOrders" view-name="forAdmin/selectOrders" />
+	<mvc:view-controller path="/admin/editedSuccessfully" view-name="forAdmin/editedSuccessfully" />
+	<mvc:view-controller path="/admin/orderSelector" view-name="admin/orderSelector" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<!-- <context:property-placeholder properties-ref="deployProperties" /> -->
+
+	<!-- Activates various annotations to be detected in bean classes -->
+	<context:annotation-config />
+
+	<bean id="myAspect" class="carrental.controllers.MyAspect" />
+	<aop:config>
+		<aop:aspect ref="myAspect">
+			<aop:before	pointcut="execution(* carrental.repository.jdbc.UserDaoImpl.find(..))" method="bla()" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- Scans the classpath for annotated components that will be auto-registered 
+		as Spring beans. For example @Controller and @Service. Make sure to set the 
+		correct base-package -->
+	<context:component-scan base-package="carrental" />
+
+	<!-- Configures the annotation-driven Spring MVC Controller programming 
+		model. Note that, with Spring 3.0, this tag works in Servlet MVC only! -->
+	<mvc:annotation-driven />
+
+	<util:properties id="boneCpProps" location="classpath:boneCp.properties" />
+	
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource">
+		<property name="properties" ref="boneCpProps" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- Bean for database creation & initialization -->
+	<bean class = "carrental.repository.util.DbInitializer" />
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="org.joda.time.LocalDate" value="carrental.controllers.LocalDateEditor" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configurer that replaces ${...} placeholders with values from a properties 
+		file -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:longQueries.xml</value>
+				<!-- List other property files here -->
+				<!-- value>mail.properties</value -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- 
+	<flow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />
+	
+	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF/flows">
+		<flow:flow-location-pattern value="*-flow.xml" />
+	</flow:flow-registry>
+	 -->
+	
+</beans>
