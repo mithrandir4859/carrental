@@ -12,7 +12,7 @@ public class Order implements Serializable {
 
 	// Constants
 	// ----------------------------------------------------------------------------------------------------
-	private static final long serialVersionUID = -1747324716684117657L;
+	private static final long serialVersionUID = -174766666657L;
 
 	// Fields
 	// ----------------------------------------------------------------------------------------------------
