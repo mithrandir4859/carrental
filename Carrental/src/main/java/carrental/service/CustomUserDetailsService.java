@@ -52,7 +52,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 
 		CustomUserDetails(User user) {
-			super(user.getEmail(), user.getPassword(), user.getFirstname(), user.getLastname(), user.getPassword(), user.getUserStatus(), user.getUserId());
+			super(user.getEmail(), user.getPassword(), user.getFirstname(), user.getLastname(), user.getPassword(), user.getUserStatus(), user.getId());
 		}
 
 		@Override

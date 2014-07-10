@@ -1,7 +1,14 @@
 package carrental.domain;
 
+import static javax.persistence.GenerationType.AUTO;
+
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User implements Serializable {
 	/**
 	 * 
@@ -15,7 +22,7 @@ public class User implements Serializable {
 	// ----------------------------------------------------------------------------------------------------
 	private String email, password, firstname, lastname, phone;
 	private UserStatus userStatus;
-	private Integer userId;
+	private Integer id;
 
 	// Constructors
 	// ----------------------------------------------------------------------------------------------------
@@ -30,126 +37,65 @@ public class User implements Serializable {
 		this.lastname = lastname;
 		this.phone = phone;
 		this.userStatus = userStatus;
-		this.userId = userId;
+		this.id = userId;
 	}
-
-	// Getters
-	// ----------------------------------------------------------------------------------------------------
 
 	public String getEmail() {
 		return email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public UserStatus getUserStatus() {
-		return userStatus;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	// Setters
-	// ----------------------------------------------------------------------------------------------------
-
-	public void setUserId(Integer id) {
-		userId = id;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getFirstname() {
+		return firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
+	public String getLastname() {
+		return lastname;
+	}
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public String getPhone() {
+		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
+	public UserStatus getUserStatus() {
+		return userStatus;
+	}
+
 	public void setUserStatus(UserStatus userStatus) {
 		this.userStatus = userStatus;
 	}
 
-	// Object overrides
-	// ----------------------------------------------------------------------------------------------------
+	@Id
+	@GeneratedValue(strategy = AUTO)
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	
-	
-
-	/**
-	 * The user ID is unique for each User. So users with same IDs should return
-	 * same hashcode.
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return (userId != null) ? (this.getClass().hashCode() + userId.hashCode()) : super.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User [email=").append(email).append(", password=").append(password).append(", firstname=").append(firstname)
-				.append(", lastname=").append(lastname).append(", phone=").append(phone).append(", userStatus=").append(userStatus)
-				.append(", userId=").append(userId).append("]");
-		return builder.toString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		return true;
-	}
-
-	// Some private helpers
-	// ----------------------------------------------------------------------------------------------------
-
-	// private void validateState() throws ModelCtorException {
-	// ModelCtorException ex = new ModelCtorException();
-	//
-	// if (FAILS == Check.required(password))
-	// ex.add("Password is required");
-	//
-	// if (FAILS == Check.required(email, Check.email()))
-	// ex.add("Email is required, must be like: blahblah@domen.bhah");
-	//
-	// if (ex.isNotEmpty())
-	// throw ex;
-	// }
-
 }

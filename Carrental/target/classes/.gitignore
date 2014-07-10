@@ -1,1 +1,9 @@
+/applicationContext.xml
 /carrental/
+/com/
+/custom.tld
+/persistence.xml
+/spring-security.xml
+/spring-servlet.xml
+/views/
+/web.xml

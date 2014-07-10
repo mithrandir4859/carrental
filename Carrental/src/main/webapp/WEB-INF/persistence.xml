@@ -6,31 +6,20 @@
 	version="1.0">
 
 	<persistence-unit name="myPu" transaction-type="RESOURCE_LOCAL">
-	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <properties>
-    	<property name="packagesToScan" value="carrental.domain" />  
-        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-        <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1?zeroDateTimeBehavior=convertToNull"/>
-        <property name="hibernate.connection.username" value="uname"/>
-        <property name="hibernate.connection.password" value="pwd"/>
-        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
-        <property name="hibernate.hbm2ddl.auto" value="update" />
-        <property name="hibernate.show_sql" value="true" />
-        <!-- 
-        <property name="hibernate.ejb.event.post-insert"
-        value="org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener" />
-        <property name="hibernate.ejb.event.post-update"
-        value="org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener" />
-        <property name="hibernate.ejb.event.post-delete"
-        value="org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener" />
-        <property name="hibernate.ejb.event.pre-collection-update"
-        value="org.hibernate.envers.event.AuditEventListener" />
-        <property name="hibernate.ejb.event.pre-collection-remove"
-        value="org.hibernate.envers.event.AuditEventListener" />
-        <property name="hibernate.ejb.event.post-collection-recreate"
-        value="org.hibernate.envers.event.AuditEventListener" />
-         -->
-        </properties>
-</persistence-unit>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>carrental.domain.User</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="true" />
+			<!-- <property name="hibernate.ejb.event.post-insert" value="org.hibernate.ejb.event.EJB3PostInsertEventListener,org.hibernate.envers.event.AuditEventListener" 
+				/> <property name="hibernate.ejb.event.post-update" value="org.hibernate.ejb.event.EJB3PostUpdateEventListener,org.hibernate.envers.event.AuditEventListener" 
+				/> <property name="hibernate.ejb.event.post-delete" value="org.hibernate.ejb.event.EJB3PostDeleteEventListener,org.hibernate.envers.event.AuditEventListener" 
+				/> <property name="hibernate.ejb.event.pre-collection-update" value="org.hibernate.envers.event.AuditEventListener" 
+				/> <property name="hibernate.ejb.event.pre-collection-remove" value="org.hibernate.envers.event.AuditEventListener" 
+				/> <property name="hibernate.ejb.event.post-collection-recreate" value="org.hibernate.envers.event.AuditEventListener" 
+				/> -->
+		</properties>
+	</persistence-unit>
 
 </persistence>

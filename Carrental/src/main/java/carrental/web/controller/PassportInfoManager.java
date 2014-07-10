@@ -29,7 +29,7 @@ public class PassportInfoManager {
 	private Integer getUserId(Principal principal){
 		String email = principal.getName();
 		User user = userDao.find(email);
-		return user.getUserId();
+		return user.getId();
 	}
 	
 	@RequestMapping(value = "user/passportInfo", method = GET)

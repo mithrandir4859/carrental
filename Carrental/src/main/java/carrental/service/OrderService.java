@@ -32,7 +32,7 @@ public class OrderService {
 	
 	private Integer getUserId(Principal principal){
 		String email = principal.getName();
-		return userDao.find(email).getUserId();
+		return userDao.find(email).getId();
 	}
 	
 	public void fillOrderListAndVehicleMap(List<Order> orderList, Map<Integer, Vehicle> vehicleMap, Principal principal){
