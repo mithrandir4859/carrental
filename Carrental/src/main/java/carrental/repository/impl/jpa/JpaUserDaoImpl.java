@@ -8,6 +8,10 @@ import carrental.repository.impl.DefaultGenericCrudDao;
 
 @Repository
 public class JpaUserDaoImpl extends DefaultGenericCrudDao<User> implements UserDao {
+	
+	{
+		setClazz(User.class);
+	}
 
 	@Override
 	public User find(String email, String password) {

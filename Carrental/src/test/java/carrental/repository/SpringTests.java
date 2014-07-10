@@ -26,18 +26,20 @@ public class SpringTests {
 	User user = new User("somemail@gmail.com", "somepassword", "Yurii", "Andrieiev", "80930987499", UserStatus.USER, null);
 	
 	@Test
-	public void testSayHello() {
-		userDao.create(user);
-		System.out.println(user.getId());
-//		userDao.find(user.getId());
-	}
-	
-	@Test
 	@Transactional
 	public void testEm(){
-//		em.getTransaction().begin();
+		System.out.println(user.getId());
+		userDao.create(user);
+//		em.persist(user);
+		System.out.println(user.getId());
+	}
+	
+	@Test @Transactional public void testLoadUser(){
+		System.out.println(userDao.find(3).getEmail());
+	}
+	
+	@Test @Transactional public void testLoadUser3(){
 		em.persist(user);
 		em.flush();
-//		em.getTransaction().commit();
 	}
 }

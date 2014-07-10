@@ -4,11 +4,14 @@ import static javax.persistence.GenerationType.AUTO;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
 	/**
 	 * 
@@ -90,6 +93,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = AUTO)
+	@Column(name = "userId")
 	public Integer getId() {
 		return id;
 	}
