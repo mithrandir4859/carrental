@@ -1,4 +1,4 @@
-package carrental.repository;
+package carrental.repository.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,12 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
+import carrental.repository.GenericCrudDao;
 
-@Repository
-@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+//@Repository
+//@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class DefaultGenericCrudDao<E extends Serializable> implements GenericCrudDao<E> {
 
 	private Class<E> clazz;

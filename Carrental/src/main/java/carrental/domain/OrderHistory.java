@@ -1,8 +1,11 @@
 package carrental.domain;
 
+import java.io.Serializable;
+
 import org.joda.time.LocalDate;
 
-public class OrderHistory {
+public class OrderHistory implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private LocalDate changeTime;
 	private Integer orderId;
 	private OrderStatus orderStatus;

@@ -14,6 +14,7 @@
 		<jdk.version>1.7</jdk.version>
 		<org.springframework.version>3.2.8.RELEASE</org.springframework.version>
 		<javax.jstl-taglibs.version>1.1.2</javax.jstl-taglibs.version>
+		<hibernate.version>4.1.1.Final</hibernate.version>
 	</properties>
 
 	<repositories>
@@ -264,7 +265,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.3.2.GA</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 
 

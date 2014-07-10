@@ -67,7 +67,7 @@ public class UserOrderManager {
 		long startMillis = new LocalDate(startYear, startMonth, startDay).toDateTimeAtStartOfDay().getMillis();
 		long endMillis = new LocalDate(endYear, endMonth, endDay).toDateTimeAtStartOfDay().getMillis();
 		Interval interval = new Interval(startMillis, endMillis);
-		List<Vehicle> vehicleList = vehicleDao.findAllAvailable(interval);
+		List<Vehicle> vehicleList = vehicleDao.findAvailable(interval);
 	
 		m.addAttribute("startMillis", startMillis);
 		m.addAttribute("endMillis", endMillis);

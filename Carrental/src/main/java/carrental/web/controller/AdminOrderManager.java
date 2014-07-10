@@ -42,7 +42,7 @@ public class AdminOrderManager {
 	public String getEditOrderForm(Model m, @RequestParam("orderId") Integer orderId) {
 
 		Order order = orderDao.find(orderId);
-		order.setOrderHistoryList(orderHistoryDao.find(order.getOrderId()));
+		order.setOrderHistoryList(orderHistoryDao.findByOrder(order.getOrderId()));
 		
 		Vehicle vehicle = vehicleDao.find(order.getVehicleId());
 		User user = userDao.find(order.getUserId());
