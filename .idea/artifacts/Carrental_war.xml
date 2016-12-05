@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Carrental:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="spring.security05.war">
+      <element id="artifact" artifact-name="Carrental:war exploded" />
+    </root>
+  </artifact>
+</component>
