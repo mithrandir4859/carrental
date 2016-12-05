@@ -25,14 +25,14 @@ userStatus INT NOT NULL DEFAULT 2,
 FOREIGN KEY (userStatus) REFERENCES UserStatus(statusId));
 
 INSERT INTO Users (email, password, firstname, lastname, phone) VALUES
-('arantir@gmail.com', 'arantirpass', 'Arantir', 'Vasilenko', '100500'),
-('lucifer@gmail.com', 'luciferpass', 'Lucifer', 'Petrov', '666666'),
-('petro@gmail.com', 'Petropass@100500', 'Petro', 'Ha', '099100500'),
-('bandera@gmail.com', 'Bandera@100500', 'Stepan', 'Bandera', '099100500'),
-('jesus@gmail.com', 'jesuspass', 'Jesus', 'Christ', '0007777777');
+('arantir@gmail.com', 'password', 'Arantir', 'Vasilenko', '100500'),
+('lucifer@gmail.com', 'password', 'Lucifer', 'Petrov', '666666'),
+('petro@gmail.com', 'password', 'Petro', 'Ha', '099100500'),
+('bandera@gmail.com', 'password', 'Stepan', 'Bandera', '099100500'),
+('jesus@gmail.com', 'password', 'Jesus', 'Christ', '0007777777');
 
 INSERT INTO Users (email, password, firstname, lastname, phone, userStatus) VALUES
-('yurii.andrieiev@gmail.com', 'Qwerty@100500', 'Yurii', 'Andrieiev', '0930888888', 3);
+('yurii.andrieiev@gmail.com', 'password', 'Yurii', 'Andrieiev', '0930888888', 3);
 
 CREATE TABLE Vehicles (
 vehicleId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
